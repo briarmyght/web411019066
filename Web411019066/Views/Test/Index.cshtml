@@ -9,22 +9,48 @@
     <p><i>下面是GitHub的連結</i></p>
     <p><a href="https://github.com/">Github</a></p>
 
-    <from>
+@using (Html.BeginForm("Action", "Controller", FormMethod.Post))
+{
+    <div>
         帳號:<br>
-        <input type="text" name="account" value="" /> <br>
+        @Html.TextBox("account")<br />
+
         密碼:<br>
-        <input type="password" name="password" value="" /> <br>
+        @Html.Password("password")<br />
+
         年齡:<br>
-        <input type="number" name="" value="" /> <br>
+        @Html.TextBox("age")<br />
         性別:<br>
-        <input type="radio" name="gender" value="A"> 男生<br>
-        <input type="radio" name="gender" value="B"> 女生<br>
+        @Html.RadioButton("gender", "A")男生
+        @Html.RadioButton("gender", "B") 女生<br />
         興趣:<br>
-        <input type="checkbox" name="item" value="A">打羽球<br>
-        <input type="checkbox" name="item" value="A">打籃球<br>
-        <input type="checkbox" name="item" value="A">打排球<br>
-        <input type="checkbox" name="item" value="A">打桌球<br>
-        <input type="checkbox" name="item" value="A">打網球
-    </from>
+        @Html.CheckBox("Reading", "A")看書
+        @Html.CheckBox("play basketball", "A")打籃球
+        @Html.CheckBox("swiming", "A")游泳<br />
+        關於我:<br>
+        @Html.TextArea("about")
 
+    </div>
+}
+   
+@{
+    var message = "hi";
+    var isStudent = false;
 
+} 
+<p>@message</p>
+<p>@DateTime.Now</p>
+
+@if (isStudent)
+{
+    <p>是學生</p>
+}
+else
+{
+    <p>不是學生</p>
+}
+<h3>1-15奇數</h3>
+@for(int i=1;i<16;i=i+2)
+{
+    <p>@i</p>
+}
